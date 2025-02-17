@@ -23,6 +23,7 @@ services:
       # working directory /app
       - ./:/app
     # Dependent services list
+
     depends_on:
       # Wait for postgres before starting node app
       - postgresdb
@@ -33,14 +34,19 @@ services:
       - 3001:3001
     environment:
       # - MONGO_URI=mongodb://mongodb:27017/pizzeria
-      - DB_HOST=localhost
-      - DB_PORT=27017
+      # env_file:
+      # - .env
+    
+      - DB_HOST=http://localhost
+      - DB_PORT=5432
       - DB_USER=admin
       - DB_PASS=slicecraftpassword
       - DB_NAME=slicecraft
       - PORT=3001
       - TYPEORM_MIGRATIONS=src/Database/Migrations/*ts
       - TYPEORM_MIGRATIONS_DIR=src/Database/Migrations
+
+     
 
   # PostgreSQL database service
   postgresdb:
@@ -50,11 +56,13 @@ services:
       - ./:/app
     restart: always
     ports:
-      - 27017:27017
+      - 5432:5432
 
     environment:
         POSTGRES_PASSWORD: slicecraftpassword
+        POSTGRES_USER: admin
         POSTGRES_DB: slicecraft
+        
 # Networks configuration for services
 networks:
   # Rede padrão, criada automaticamente
