@@ -37,7 +37,7 @@ services:
       # env_file:
       # - .env
     
-      - DB_HOST=http://localhost
+      - DB_HOST=postgresdb
       - DB_PORT=5432
       - DB_USER=admin
       - DB_PASS=slicecraftpassword
@@ -50,18 +50,18 @@ services:
 
   # PostgreSQL database service
   postgresdb:
-    image: postgres:15.1
+    image: postgres:latest
     container_name: slicecraft_db
     volumes:
       - ./:/app
     restart: always
-    ports:
-      - 5432:5432
-
     environment:
         POSTGRES_PASSWORD: slicecraftpassword
         POSTGRES_USER: admin
         POSTGRES_DB: slicecraft
+    ports:
+      # Expose database port
+      - 5432:5432
         
 # Networks configuration for services
 networks:
@@ -78,3 +78,4 @@ networks:
 # Custom default network name
 # to prevent container conflicts
 # across projects
+  
