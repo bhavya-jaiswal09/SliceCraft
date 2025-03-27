@@ -1,11 +1,11 @@
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography, Box, Grid, Paper } from "@mui/material";
 import {Formik, Form, Field, FormikHelpers, ErrorMessage} from "formik"
 import { useState } from "react";
 import { postRequest } from "../services/api";
 import { validationLogin } from "../utils/schemas/formValidations";
 import { useRouter } from 'next/router'
 import { AxiosError } from "axios";
-
+import Link from "next/link";
 
 interface MyFormValues {
   email: string;
@@ -28,7 +28,21 @@ export default function LoginForm() {
   }
 
 return (
-  <div>    
+  <Box
+  sx={{
+    width: "100%",
+    height: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }}
+  >
+  <Paper elevation={3}>  
+  <Box m={5} p={3}
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+  }}> 
     <Formik
      initialValues={initialValues}
      onSubmit={handleOnSubmitLogin}
@@ -46,6 +60,7 @@ return (
           placeholder="Enter your email"
           variant="outlined"
           margin="dense"
+          fullWidth
           helperText={<ErrorMessage name="email" />}
           error={props.errors.email && props.touched.email}
           />         
@@ -57,17 +72,23 @@ return (
           as={TextField}       
           placeholder="Digite sua password"
           margin="dense"
+          fullWidth
           helperText={<ErrorMessage name="password" />}
           error={props.errors.password && props.touched.password}
           />
-         
-       <Button color="primary" variant="contained" fullWidth={false} type="submit">
+         <Typography style={{ color: '#757575' }} mt={1} mb={2}>
+         Don't have an account?
+         <Link style={{ textDecoration: "none", color: '#1769aa' }} href="/register">  Create one!</Link>
+         </Typography>
+       <Button color="primary" variant="contained" fullWidth type="submit">
           Login
         </Button>
       </Form>
         )
         }}
     </Formik>
-  </div>
+  </Box>
+  </Paper>
+   </Box>
 )
 }
