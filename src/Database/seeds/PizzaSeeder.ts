@@ -17,7 +17,7 @@ export class PizzaSeeder implements Seeder {
       {
         flavor: "Quatro Queijos",
         type: "Savory",
-        price: 29.0,
+        price: 29.50,
         ingredients: [
           "Queijo",
           "requeijão",
@@ -30,28 +30,28 @@ export class PizzaSeeder implements Seeder {
       {
         flavor: "Calabresa",
         type: "Savory",
-        price: 29.0,
+        price: 30.00,
         ingredients: ["Queijo", "calabresa", "cebola", "oregano"],
         img: `${BASE_URL}/images/pizza-calabresa.jpg`,
       },
       {
         flavor: "Pepperoni",
         type: "Savory",
-        price: 29.0,
+        price: 29.90,
         ingredients: ["Queijo", "oregano", "pepperoni"],
         img: `${BASE_URL}/images/pizza-peperoni.jpg`,
       },
       {
         flavor: "Napolitana",
         type: "Savory",
-        price: 29.0,
+        price: 28.90,
         ingredients: ["Queijo", "tomate", "oregano", "parmesão", "ralado"],
         img: `${BASE_URL}/images/pizza-napolitana.jpg`,
       },
       {
         flavor: "Prestigio",
         type: "Sweet",
-        price: 29.0,
+        price: 30.50,
         ingredients: [
           "chocolate",
           "coco Ralado",
@@ -63,14 +63,14 @@ export class PizzaSeeder implements Seeder {
       {
         flavor: "Chocolate",
         type: "Sweet",
-        price: 29.0,
+        price: 29.00,
         ingredients: ["chocolate artesanal", "morango", "leite Condensado"],
         img: `${BASE_URL}/images/pizza-chocolate.jpg`,
       },
       {
         flavor: "Sonho de valsa",
         type: "Sweet",
-        price: 29.0,
+        price: 31.90,
         ingredients: [
           "Muçarela",
           "Chocolate ao leite",
@@ -81,7 +81,7 @@ export class PizzaSeeder implements Seeder {
       {
         flavor: "Banana com canela",
         type: "Sweet",
-        price: 29.0,
+        price: 28.90,
         ingredients: ["banana", "canela", "licor de cacau"],
         img: `${BASE_URL}/images/pizza-banana-canela.webp`,
       },
