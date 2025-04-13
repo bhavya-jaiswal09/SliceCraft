@@ -58,6 +58,6 @@ export default class CreateCartService {
       )
     );
 
-    return "Successful cart";
+    return { message: "Cart created successfully" };
   }
 }

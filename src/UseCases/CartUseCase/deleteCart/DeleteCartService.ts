@@ -10,13 +10,13 @@ export default class DeleteCartService {
 
     const user = await this.repository.user.findOne({ id });
 
-    if (!user || user.email !== email) throw new CustomError("User does not exist", 401);
+    if (!user || user.email !== email) throw new CustomError("User not found", 401);
 
     const cart = await this.repository.cart.findOne({ id: cartId });
-    if (!cart || cart.id !== cartId) throw new CustomError("Unexpected cart", 401);
+    if (!cart || cart.id !== cartId) throw new CustomError("Cart mismatch", 401);
 
     await this.repository.cart.delete(cartId);
 
-    return { message: "Deleted cart" };
+    return { message: "Cart deleted successfully" };
   }
 }

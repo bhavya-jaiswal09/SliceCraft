@@ -14,20 +14,19 @@ export default class DeleteCartItemService {
 
     const user = await this.repository.user.findOne({ id });
 
-    if (!user || user.email !== email) throw new CustomError("User does not exist", 401);
-    console.log(cartId);
+    if (!user || user.email !== email) throw new CustomError("User not found", 401);
 
     const cartItem = await this.repository.cartItem.findOne({ id: cartItemId });
-    if (!cartItem || cartItem.id !== cartItemId) throw new CustomError("Unexpected cart item", 401);
+    if (!cartItem || cartItem.id !== cartItemId) throw new CustomError("Item do cart inesperado", 401);
 
     await this.repository.cartItem.delete(cartItemId);
 
     const cart = await this.repository.cart.findOne({ id: cartId });
-    if (!cart || cart.id !== cartId) throw new CustomError("Cart not found", 404);
+    if (!cart || cart.id !== cartId) throw new CustomError("Cart não encontrado", 404);
 
     if (!cart.cartPizzas.length) {
       await this.repository.cart.delete(cartId);
-      return { message: "Cart Deleted" };
+      return { message: "Cart deleted successfully" };
     }
 
     const { saleInfo, pizzas } = saleInfoFactory(cart);
@@ -36,6 +35,6 @@ export default class DeleteCartItemService {
 
     await this.repository.cart.update(cart, { totalPrice });
 
-    return { message: "Item deleted from cart" };
+    return { message: "Cart item removed successfully" };
   }
 }

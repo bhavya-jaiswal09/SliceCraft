@@ -24,10 +24,10 @@ export default class AddCartItemService {
     if (!user || user.email !== email) throw new CustomError("User not found", 404);
 
     const cart = await this.repository.cart.findOne({ id: cartId });
-    if (!cart || cart.id !== cartId) throw new CustomError("Cart not found", 404);
+    if (!cart || cart.id !== cartId) throw new CustomError("Cart não encontrado", 404);
 
     const pizza = await this.repository.pizza.findOne({ id: pizzaId });
-    if (!pizza || pizza.id !== pizzaId) throw new CustomError("Pizza not found", 404);
+    if (!pizza || pizza.id !== pizzaId) throw new CustomError("Pizza não encontrada", 404);
 
     const { saleInfo, pizzas } = saleInfoFactory(cart);
 
@@ -37,6 +37,6 @@ export default class AddCartItemService {
 
     await this.repository.cartPizzas.create({ cart, pizza, ...itemInfo });
 
-    return "Cart item successfully added";
+    return "Pizza adicionada";
   }
 }

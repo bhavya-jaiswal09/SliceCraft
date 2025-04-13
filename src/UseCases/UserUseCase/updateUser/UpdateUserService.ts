@@ -19,13 +19,13 @@ export default class UpdateUserService {
 
     const user = await this.repository.findOne({ id: userPayload.id });
 
-    if (!user) throw new CustomError("User does not exist", 401);
+    if (!user) throw new CustomError("User not found", 401);
 
     if (userPayload.id !== id)
-      throw new CustomError("Unauthorized", 401);
+      throw new CustomError("Não autorizado", 401);
 
     await this.repository.update(user, userData);
 
-    return { message: "Updated user" };
+    return { message: "User atualizado" };
   }
 }
