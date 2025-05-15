@@ -76,19 +76,28 @@ export const validationEditCartItem = yup.object().shape({
 export const validationEditPizza = yup.object().shape({
   flavor: yup
     .string()
-    .min(5, "Name must have at least 5 characters")
+    .min(3, "Name must have at least 5 characters")
     .required("This field is required"),
   type: yup
     .string()
-    .min(5, "Name must have at least 2 characters")
+    .min(2, "Name must have at least 2 characters")
     .required("This field is required"),
   price: yup
     .number()
     .min(1, "Value must be greater than or equal to 1")
     .required("This field is required"),
   ingredients: yup
-    .array()
-    .of(yup.string())
+    .array(yup.string())
+    // .of(yup.string().required("O valor deve ser uma string"))
     .required("This field is required"),
   img: yup.string().required("This field is required"),
+});
+
+export const validationFieldIngredient = yup.object().shape({
+  ingredient: yup
+    .mixed()
+    .notOneOf(
+      [yup.number(), yup.string().matches(/^[0-9]+$/)],
+      "O campo não pode ser um número ou uma string de número"
+    ),
 });
