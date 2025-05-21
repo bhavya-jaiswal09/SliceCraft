@@ -93,11 +93,5 @@ export const validationEditPizza = yup.object().shape({
   img: yup.string().required("This field is required"),
 });
 
-export const validationFieldIngredient = yup.object().shape({
-  ingredient: yup
-    .mixed()
-    .notOneOf(
-      [yup.number(), yup.string().matches(/^[0-9]+$/)],
-      "O campo não pode ser um número ou uma string de número"
-    ),
-});
+export const validationFieldIngredient = yup.string().matches(/^[a-zA-Z]+$/, 'Ingredient name must contain only letters')
+
