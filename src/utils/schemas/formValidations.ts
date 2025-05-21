@@ -73,7 +73,7 @@ export const validationEditCartItem = yup.object().shape({
     .required("This field is required"),
 });
 
-export const validationEditPizza = yup.object().shape({
+export const validationPizza = yup.object().shape({
   flavor: yup
     .string()
     .min(3, "Name must have at least 5 characters")
