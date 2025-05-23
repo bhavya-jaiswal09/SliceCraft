@@ -12,7 +12,7 @@ export default function calculateTotalPrice(saleInfo: ISaleInfo[], pizzas: IPizz
       case "small":
         price -= 8;
         break;
-      case "big":
+      case "large":
         price += 15;
         break;
       default:
