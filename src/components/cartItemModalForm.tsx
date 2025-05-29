@@ -72,9 +72,9 @@ export default function CartItemModalForm({
         <Formik
           enableReinitialize
           initialValues={{
-            size: "medium",
-            border: false,
-            quantity: 1,
+            size: info.size,
+            border: info.border,
+            quantity: info.quantity,
           }}
           onSubmit={async (values) => {
             console.log(values);
@@ -88,15 +88,14 @@ export default function CartItemModalForm({
                 labelId="select-size-label"
                 name="size"
                 label="Size"
-                helperText={<ErrorMessage name="size" />}
-                error={props.errors.size}
+                as={Select}
                 sx={{
                   color: "white",
                 }}
-                as={Select}
+               
               >
                 <MenuItem value="medium">Medium</MenuItem>
-                <MenuItem value="big">Large</MenuItem>
+                <MenuItem value="large">Large</MenuItem>
                 <MenuItem value="small">Small</MenuItem>
               </Field>
 
@@ -111,14 +110,12 @@ export default function CartItemModalForm({
                 as={Checkbox}
                 variant="outlined"
                 margin="dense"
-                helperText={<ErrorMessage name="border" />}
-                error={props.errors.border}
               />
               <Field
                 name="quantity"
                 label="Quantity"
                 type="number"
-                // variant="outlined" 
+                // variant="outlined"
                 margin="dense"
                 fullWidth
                 helperText={<ErrorMessage name="quantity" />}
@@ -134,7 +131,7 @@ export default function CartItemModalForm({
                 }}
                 as={TextField}
                 InputProps={{
-                  style: { color: 'white', borderColor: "white" },
+                  style: { color: "white", borderColor: "white" },
                   inputProps: {
                     min: 1,
                   },
