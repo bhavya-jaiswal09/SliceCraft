@@ -11,15 +11,20 @@ import {
 } from "@mui/material";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useRouter } from "next/router";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { userContext } from "../context/userProvider";
+import { Height } from "@mui/icons-material";
 
 type AddToCartFormProps = {
   pizzaId: string;
+  hasDetailsButton?: boolean;
 };
 
-export default function AddToCartForm({ pizzaId }: AddToCartFormProps) {
+export default function AddToCartForm({
+  pizzaId,
+  hasDetailsButton = false,
+}: AddToCartFormProps) {
   const { handlePurchase } = useContext(userContext);
   const router = useRouter();
 
@@ -50,23 +55,25 @@ export default function AddToCartForm({ pizzaId }: AddToCartFormProps) {
             }}
           >
             <Typography>Size:</Typography>
-            <FormControl variant="standard">
-              <Field
-                labelId="select-size-label"
-                name="size"
-                // label="Size"
-                sx={{
-                  color: "white",
-                  height: "30px",
-                  border: "none",
-                }}
-                as={Select}
-              >
-                <MenuItem value="medium">Medium</MenuItem>
-                <MenuItem value="large">Large</MenuItem>
-                <MenuItem value="small">Small</MenuItem>
-              </Field>
-            </FormControl>
+
+            <Field
+              labelId="select-size-label"
+              name="size"
+              sx={{
+                color: "white",
+                height: "40px",
+                boxShadow: "0 0 4px rgba(252, 252, 15, 0.445)",
+                "&:focus": {
+                  outline: "none",
+                },
+                margin: "10px 0"
+              }}
+              as={Select}
+            >
+              <MenuItem value="medium">Medium</MenuItem>
+              <MenuItem value="large">Large</MenuItem>
+              <MenuItem value="small">Small</MenuItem>
+            </Field>
           </Box>
           <Box
             sx={{
@@ -75,17 +82,19 @@ export default function AddToCartForm({ pizzaId }: AddToCartFormProps) {
               gap: "10px",
             }}
           >
-            <Typography>Crust:</Typography>
+            <Typography>Stuffed Crust:</Typography>
             <Field
               name="border"
               // label="Crust"
               size="medium"
               type="checkbox"
               sx={{
-                color: "white",
+                color: "rgba(243, 243, 38, 0.199)",
+                marginBottom: "10px"
               }}
               as={Checkbox}
-              variant="outlined"
+              
+              // variant="outlined"
             />
           </Box>
 
@@ -94,6 +103,7 @@ export default function AddToCartForm({ pizzaId }: AddToCartFormProps) {
               display: "flex",
               alignItems: "center",
               gap: "10px",
+              marginBottom: "10px"
             }}
           >
             <Typography>Quantity:</Typography>
@@ -107,6 +117,10 @@ export default function AddToCartForm({ pizzaId }: AddToCartFormProps) {
                 color: "white",
                 borderColor: "white",
                 width: "80px",
+                // backgroundColor: "#3e3e3e",
+                boxShadow: "0 0 4px rgba(252, 252, 15, 0.445)",
+                borderRadius: "2px",
+
                 // "& input:valid + fieldset": {
                 //   borderColor: "white",
                 //   borderWidth: 2,
@@ -114,10 +128,15 @@ export default function AddToCartForm({ pizzaId }: AddToCartFormProps) {
               }}
               as={TextField}
               InputProps={{
-                style: { color: "white", borderColor: "white" },
+                style: {
+                  color: "white",
+                  borderColor: "white",
+                  padding: "0 10px",
+                },
                 inputProps: {
                   min: 1,
                 },
+                disableUnderline: true,
               }}
             />
           </Box>
@@ -126,19 +145,21 @@ export default function AddToCartForm({ pizzaId }: AddToCartFormProps) {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              // marginTop: "15px",
-              padding: '10px 0',
+              flexWrap: "wrap",
+              padding: "10px 0",
             }}
           >
-            <Button
-              variant="contained"
-              // sx={{backgroundColor: '#FFCC33', color: 'black'}}
-              onClick={() => router.push(`/pizzas/${pizzaId}`)}
-            >
-              Detalhes
-            </Button>
+            {hasDetailsButton && (
+              <Button
+                variant="contained"
+                // sx={{backgroundColor: '#FFCC33', color: 'black'}}
+                onClick={() => router.push(`/pizzas/${pizzaId}`)}
+              >
+                Detalhes
+              </Button>
+            )}
             <Button color="primary" variant="contained" type="submit">
-              Adicionar ao cart <AddShoppingCartIcon fontSize="small"/>
+              Adicionar ao cart <AddShoppingCartIcon fontSize="small" />
             </Button>
           </Box>
         </Form>
