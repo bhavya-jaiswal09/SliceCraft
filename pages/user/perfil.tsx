@@ -1,17 +1,16 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  Container,
-  Typography,
-} from "@mui/material";
-import { useRouter } from "next/router";
-import { Box } from "@mui/system";
-import Layout from "../../src/components/layout";
-import ProfileForm from "../../src/components/profileForm";
+import { Container } from "@mui/material";
+import { GetServerSideProps } from "next";
 
-export default function Profile() {
-  const router = useRouter();
+import ProfileForm from "../../src/components/profileForm";
+import getUser from "../../src/services/getUser";
+import Layout from "../../src/components/layout";
+import { User } from "../../src/Types";
+
+type ProfileProps = {
+  user: User;
+};
+
+export default function Profile({ user }: ProfileProps) {
   return (
     <Layout title="Profile">
       <Container
@@ -22,13 +21,37 @@ export default function Profile() {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          // gap: "10px",
           padding: "20px",
           justifyContent: "center",
         }}
       >
-        <ProfileForm />
+        <ProfileForm user={user} />
       </Container>
     </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  try {
+    const { data } = await getUser(ctx);
+
+    if (!data)
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/login",
+        },
+      };
+
+    return {
+      props: { user: data },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/login",
+      },
+    };
+  }
+};
