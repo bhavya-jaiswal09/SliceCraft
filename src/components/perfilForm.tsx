@@ -212,7 +212,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
                         mb: 5,
                         border: "1px solid white",
                       }}
-                      alt=""
+                      alt="Imagem de profile"
                       src={
                         props.values.image ||
                         "https://cdn-icons-png.flaticon.com/512/711/711769.png"
