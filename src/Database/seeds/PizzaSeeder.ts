@@ -42,6 +42,20 @@ export class PizzaSeeder implements Seeder {
         img: `${BASE_URL}/images/pizza-peperoni.jpg`,
       },
       {
+        flavor: "Portuguesa",
+        type: "Savory",
+        price: 33.90,
+        ingredients: ["molho de tomate", "muçarela", "presunto", "ovos", "cebola", "azeitona", "pimentão"],
+        img: `${BASE_URL}/images/pizza-portuguesa.png`,
+      },
+      {
+        flavor: "Frango com Catupiry",
+        type: "Savory",
+        price: 31.90,
+        ingredients: ["frango desfiado", "catupiry", "cebola", "milho"],
+        img: `${BASE_URL}/images/pizza-frango-catupiry.png`,
+      },
+      {
         flavor: "Napolitana",
         type: "Savory",
         price: 28.90,
