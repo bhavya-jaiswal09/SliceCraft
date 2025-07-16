@@ -93,5 +93,5 @@ export const validationPizza = yup.object().shape({
   img: yup.string().required("This field is required"),
 });
 
-export const validationFieldIngredient = yup.string().matches(/^[a-zA-Z]+$/, 'Ingredient name must contain only letters')
+export const validationFieldIngredient = yup.string().matches(/^[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/, 'Ingredient name must contain only letters')
 

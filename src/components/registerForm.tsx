@@ -1,18 +1,61 @@
 import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { Button, TextField, Typography, Box, Grid, Paper, InputAdornment, IconButton } from "@mui/material";
+import {
+  Button,
+  TextField,
+  Typography,
+  Box,
+  Grid,
+  InputAdornment,
+  IconButton,
+  styled,
+} from "@mui/material";
 import { Formik, Form, Field, FormikHelpers, ErrorMessage } from "formik";
 import { setCookie } from "nookies";
 
 import { postRequest } from "../services/api";
-import {
-  validationLogin,
-  validationRegister,
-} from "../utils/schemas/formValidations";
+import { validationRegister } from "../utils/schemas/formValidations";
 import { userContext } from "../context/userProvider";
 import { Login } from "../Types";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+
+const StyledField = styled(TextField)(({ theme }) => ({
+  ".MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+    borderColor: "white",
+    color: "white",
+  },
+  "label, input ": {
+    color: "white",
+  },
+
+  ".MuiOutlinedInput-root:not(.Mui-focused):hover .MuiOutlinedInput-notchedOutline":
+    {
+      borderColor: "white",
+    },
+}));
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  backgroundColor: "#0000005c",
+  borderRadius: "10px",
+  color: theme.palette.primary.main,
+  display: "flex",
+  flexDirection: "column",
+  padding: "40px",
+  overflowY: "auto",
+  maxHeight: "650px",
+
+  "&::-webkit-scrollbar": {
+    width: "0.4em",
+  },
+  "&::-webkit-scrollbar-track": {
+    backgroundColor: "transparent",
+  },
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: theme.palette.primary.main,
+    borderRadius: "10px",
+  },
+}));
 
 interface MyFormValues {
   firstName: string;
@@ -80,171 +123,163 @@ export default function RegisterForm() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        overflow: "",
       }}
     >
-      <Paper elevation={3}>
-        <Box
-          m={5}
-          p={3}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-          }}
+      <StyledBox>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleOnSubmitRegister}
+          validationSchema={validationRegister}
         >
-          <Formik
-            initialValues={initialValues}
-            onSubmit={handleOnSubmitRegister}
-            validationSchema={validationRegister}
-          >
-            {(props) => {
-              return (
-                <Form>
-                  <Typography variant="h4">Create Account</Typography>
+          {(props) => {
+            return (
+              <Form>
+                <Typography variant="h4">Create Account</Typography>
 
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        name="firstName"
-                        label="Nome"
-                        type="text"
-                        as={TextField}
-                        placeholder="Nome"
-                        variant="outlined"
-                        margin="dense"
-                        fullWidth
-                        helperText={<ErrorMessage name="firstName" />}
-                        error={
-                          props.errors.firstName && props.touched.firstName
-                        }
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        name="lastName"
-                        label="Last Name"
-                        type="text"
-                        as={TextField}
-                        placeholder="Last Name"
-                        variant="outlined"
-                        margin="dense"
-                        fullWidth
-                        helperText={<ErrorMessage name="lastName" />}
-                        error={props.errors.lastName && props.touched.lastName}
-                      />
-                    </Grid>
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      name="firstName"
+                      label="Nome"
+                      type="text"
+                      as={StyledField}
+                      placeholder="Nome"
+                      variant="outlined"
+                      margin="dense"
+                      fullWidth
+                      helperText={<ErrorMessage name="firstName" />}
+                      error={props.errors.firstName && props.touched.firstName}
+                    />
                   </Grid>
-
-                  <Field
-                    name="email"
-                    label="Email"
-                    type="email"
-                    as={TextField}
-                    variant="outlined"
-                    margin="dense"
-                    fullWidth
-                    placeholder="Enter your email"
-                    helperText={<ErrorMessage name="email" />}
-                    error={props.errors.email && props.touched.email}
-                  />
-
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        id="password"
-                        label="Password"
-                        name="password"
-                        as={TextField}
-                        type={showPassword ? "text" : "password"}
-                        variant="outlined"
-                        margin="dense"
-                        fullWidth
-                        placeholder="Digite uma password"
-                        helperText={<ErrorMessage name="password" />}
-                        error={props.errors.password && props.touched.password}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <IconButton
-                                onClick={handleClickShowPassword}
-                                edge="end"
-                              >
-                                {showPassword ? (
-                                  <Visibility />
-                                ) : (
-                                  <VisibilityOff />
-                                )}
-                              </IconButton>
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        name="confirmPassword"
-                        label="Confirm Password"
-                        type="password"
-                        placeholder="Confirme sua password"
-                        as={TextField}
-                        variant="outlined"
-                        margin="dense"
-                        fullWidth
-                        helperText={<ErrorMessage name="confirmPassword" />}
-                        error={
-                          props.errors.confirmPassword &&
-                          props.touched.confirmPassword
-                        }
-                      />
-                    </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      name="lastName"
+                      label="Last Name"
+                      type="text"
+                      as={StyledField}
+                      placeholder="Last Name"
+                      variant="outlined"
+                      margin="dense"
+                      fullWidth
+                      helperText={<ErrorMessage name="lastName" />}
+                      error={props.errors.lastName && props.touched.lastName}
+                    />
                   </Grid>
-                  <Field
-                    name="phone"
-                    label="Phone"
-                    as={TextField}
-                    id="phone"
-                    type="text"
-                    variant="outlined"
-                    margin="dense"
-                    fullWidth
-                    placeholder="(00) 00000-0000"
-                    helperText={<ErrorMessage name="phone" />}
-                    error={props.errors.phone && props.touched.phone}
-                  />
-                  <Field
-                    name="address"
-                    label="Address"
-                    id="address"
-                    type="text"
-                    placeholder="Digite seu address"
-                    as={TextField}
-                    variant="outlined"
-                    margin="dense"
-                    fullWidth
-                    helperText={<ErrorMessage name="address" />}
-                    error={props.errors.address && props.touched.address}
-                  />
-                  <Typography style={{ color: "#757575" }} mt={1} mb={2}>
-                    <Link
-                      style={{ textDecoration: "none", color: "#1769aa" }}
-                      href="/login"
-                    >
-                      Already have an account?
-                    </Link>
-                  </Typography>
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    fullWidth
-                    type="submit"
+                </Grid>
+
+                <Field
+                  name="email"
+                  label="Email"
+                  type="email"
+                  as={StyledField}
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  placeholder="Enter your email"
+                  helperText={<ErrorMessage name="email" />}
+                  error={props.errors.email && props.touched.email}
+                />
+
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      id="password"
+                      label="Password"
+                      name="password"
+                      as={StyledField}
+                      type={showPassword ? "text" : "password"}
+                      variant="outlined"
+                      margin="dense"
+                      fullWidth
+                      placeholder="Digite uma password"
+                      helperText={<ErrorMessage name="password" />}
+                      error={props.errors.password && props.touched.password}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              sx={{ color: "white" }}
+                              onClick={handleClickShowPassword}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <Visibility />
+                              ) : (
+                                <VisibilityOff />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      name="confirmPassword"
+                      label="Confirm Password"
+                      type="password"
+                      placeholder="Confirme sua password"
+                      as={StyledField}
+                      variant="outlined"
+                      margin="dense"
+                      fullWidth
+                      helperText={<ErrorMessage name="confirmPassword" />}
+                      error={
+                        props.errors.confirmPassword &&
+                        props.touched.confirmPassword
+                      }
+                    />
+                  </Grid>
+                </Grid>
+                <Field
+                  name="phone"
+                  label="Phone"
+                  as={StyledField}
+                  id="phone"
+                  type="text"
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  placeholder="(00) 00000-0000"
+                  helperText={<ErrorMessage name="phone" />}
+                  error={props.errors.phone && props.touched.phone}
+                />
+                <Field
+                  name="address"
+                  label="Address"
+                  id="address"
+                  type="text"
+                  placeholder="Digite seu address"
+                  as={StyledField}
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  helperText={<ErrorMessage name="address" />}
+                  error={props.errors.address && props.touched.address}
+                />
+                <Typography mt={1} mb={2}>
+                  <Link
+                    style={{ textDecoration: "none", color: "#FFCC33" }}
+                    href="/login"
                   >
-                    Cadastrar
-                  </Button>
-                </Form>
-              );
-            }}
-          </Formik>
-        </Box>
-      </Paper>
+                    Already have an account?
+                  </Link>
+                </Typography>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  fullWidth
+                  type="submit"
+                  sx={{ fontWeight: "bold", fontSize: "20px" }}
+                >
+                  Cadastrar
+                </Button>
+              </Form>
+            );
+          }}
+        </Formik>
+      </StyledBox>
     </Box>
   );
 }
