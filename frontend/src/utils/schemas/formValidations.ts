@@ -88,7 +88,6 @@ export const validationPizza = yup.object().shape({
     .required("This field is required"),
   ingredients: yup
     .array(yup.string())
-    // .of(yup.string().required("O valor deve ser uma string"))
     .required("This field is required"),
   img: yup.string().required("This field is required"),
 });
