@@ -1,11 +1,19 @@
 import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
+const userPaths = ["/user/cart", "/user/my_orders", "/user/profile"];
+const adminPaths = ["/admin/pizzas", "/admin/users"];
+
 export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
 
-  if (!req.cookies.get('pizzeria.token')) {
-    url.pathname = '/login';
+  if (!userPaths.includes(url.pathname) && !adminPaths.includes(url.pathname)) {
+    url.pathname = "/404";
+    return NextResponse.redirect(url);
+  }
+
+  if (!req.cookies.get("pizzeria.token")) {
+    url.pathname = "/login";
     return NextResponse.redirect(url);
   }
 
