@@ -99,7 +99,7 @@ export default function AddToCartForm({
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", padding: "10px 0" }}>
             {hasDetailsButton && (
-              <Button variant="contained" onClick={() => router.push(/pizzas/)}>
+              <Button variant="contained" onClick={() => router.push("/pizzas")}>
                 Details
               </Button>
             )}
