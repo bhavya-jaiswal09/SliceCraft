@@ -23,7 +23,7 @@ import setApiHeaders from "../../src/services/setApiHeaders";
 
 import { styled } from "@mui/material/styles";
 
-const tableHeader = ["Foto", "Nome", "Email", "Address", "Phone", ""];
+const tableHeader = ["Photo", "Name", "Email", "Address", "Phone", ""];
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -77,10 +77,10 @@ export default function AdminUsers(props: AdminUsersProps) {
   };
 
   return (
-    <Layout title="Admin: users">
+    <Layout title="Admin: Users">
       <Container maxWidth="xl">
         <Typography color="white" variant="h4" sx={{ m: 2 }}>
-          Controle de Users
+          User Management
         </Typography>
         <Box
           sx={{
@@ -95,7 +95,7 @@ export default function AdminUsers(props: AdminUsersProps) {
               borderRadius: "10px",
             }}
           >
-            <Table sx={{ minWidth: 700 }} aria-label="Table de users">
+            <Table sx={{ minWidth: 700 }} aria-label="Users Table">
               <TableHead>
                 <TableRow>
                   {tableHeader.map((col, i) => (
@@ -114,7 +114,7 @@ export default function AdminUsers(props: AdminUsersProps) {
                           backgroundColor: "white",
                           border: "2px solid #FFCC33",
                         }}
-                        title={`Imagem do ${row.name} `}
+                        title={`Image of ${row.name}`}
                         src={row.img}
                       />
                     </StyledTableCell>
@@ -124,7 +124,7 @@ export default function AdminUsers(props: AdminUsersProps) {
                     <StyledTableCell>{row.phone}</StyledTableCell>
                     <StyledTableCell align="right">
                       <IconButton
-                        aria-label="Excluir user"
+                        aria-label="Delete User"
                         onClick={() => handleUserDeletion(row.id)}
                       >
                         <DeleteIcon

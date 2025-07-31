@@ -17,6 +17,6 @@ export default class DeleteCartService {
 
     await this.repository.cart.delete(cartId);
 
-    return { message: "Cart deleted successfully" };
+    return { message: "Cart deletado" };
   }
 }

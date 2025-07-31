@@ -97,9 +97,9 @@ export default function AdminPizzaCard({
                 </IconButton>
               </Tooltip>
 
-              <Tooltip title="Excluir">
+              <Tooltip title="Delete">
                 <IconButton
-                  aria-label="Excluir Pizza"
+                  aria-label="Delete Pizza"
                   onClick={() => handlePizzaDeletion()}
                 >
                   <DeleteIcon sx={{ color: "white" }} fontSize="medium" />

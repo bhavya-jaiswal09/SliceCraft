@@ -27,16 +27,16 @@ type UserProviderProps = {
 
 const adminMenu = [
   { option: "My Profile", endPoint: "/user/profile" },
-  { option: "My Orders", endPoint: "/user/my_orders" },
+  { option: "Orders", endPoint: "/user/my_orders" },
   { option: "Users", endPoint: "/admin/users" },
   { option: "Pizzas", endPoint: "/admin/pizzas" },
-  { option: "Sair", endPoint: "/pizzas" },
+  { option: "Logout", endPoint: "/pizzas" },
 ];
 
 const customerMenu = [
   { option: "My Profile", endPoint: "/user/profile" },
   { option: "My Orders", endPoint: "/user/my_orders" },
-  { option: "Sair", endPoint: "/pizzas" },
+  { option: "Logout", endPoint: "/pizzas" },
 ];
 
 const loggedOutMenu = [

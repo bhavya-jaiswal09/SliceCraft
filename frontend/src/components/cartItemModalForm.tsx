@@ -194,7 +194,7 @@ export default function CartItemModalForm({
                   type="submit"
                   sx={{ fontWeight: "bold" }}
                 >
-                  Editar
+                  Edit
                 </Button>
               </Box>
             </Form>

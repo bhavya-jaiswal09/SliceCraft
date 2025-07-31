@@ -27,7 +27,7 @@ export const validationRegister = yup.object().shape({
     .required("This field is required"),
   password: yup
     .string()
-    .min(6, "A password deve ter 6 caracteres no mínimo")
+    .min(6, "Password must be at least 6 characters")
     .required("This field is required"),
   confirmPassword: yup
     .string()
@@ -54,7 +54,7 @@ export const validationProfile = yup.object().shape({
     .string()
     .email("Invalid email address")
     .required("This field is required"),
-  password: yup.string().min(6, "A password deve ter 6 caracteres no mínimo"),
+  password: yup.string().min(6, "Password must be at least 6 characters"),
   phone: yup
     .string()
     .matches(

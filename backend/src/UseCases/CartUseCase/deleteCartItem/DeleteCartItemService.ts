@@ -17,7 +17,7 @@ export default class DeleteCartItemService {
     if (!user || user.email !== email) throw new CustomError("User not found", 401);
 
     const cartItem = await this.repository.cartItem.findOne({ id: cartItemId });
-    if (!cartItem || cartItem.id !== cartItemId) throw new CustomError("Item do cart inesperado", 401);
+    if (!cartItem || cartItem.id !== cartItemId) throw new CustomError("Unexpected cart item", 401);
 
     await this.repository.cartItem.delete(cartItemId);
 
@@ -26,7 +26,7 @@ export default class DeleteCartItemService {
 
     if (!cart.cartPizzas.length) {
       await this.repository.cart.delete(cartId);
-      return { message: "Cart deleted successfully" };
+      return { message: "Cart deletado" };
     }
 
     const { saleInfo, pizzas } = saleInfoFactory(cart);
@@ -35,6 +35,6 @@ export default class DeleteCartItemService {
 
     await this.repository.cart.update(cart, { totalPrice });
 
-    return { message: "Cart item removed successfully" };
+    return { message: "Item removed from cart" };
   }
 }

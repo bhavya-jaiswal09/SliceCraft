@@ -279,7 +279,7 @@ export default function PizzaUpdateModalForm({
                           )
                         }
                       >
-                        Adicionar
+                        Add
                       </Button>
                     </InputAdornment>
                   ),
@@ -299,7 +299,7 @@ export default function PizzaUpdateModalForm({
               />
 
               <Button color="primary" variant="contained" type="submit">
-                Editar
+                Edit
               </Button>
             </Form>
           )}

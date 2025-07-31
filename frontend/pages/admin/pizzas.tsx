@@ -32,7 +32,7 @@ export default function AdminPizzas(props: AdminPizzasProps) {
   };
 
   return (
-    <Layout title="Admin: pizzas">
+    <Layout title="Admin: Pizzas">
       <Container
         maxWidth="xl"
         sx={{
@@ -52,7 +52,7 @@ export default function AdminPizzas(props: AdminPizzasProps) {
             sx={{ width: { xs: "100%", sm: "200px" }, fontWeight: "bold" }}
             onClick={() => setOpenCreateModal(true)}
           >
-            Criar pizza
+            Create Pizza
           </Button>
         </Box>
         <Grid container spacing={4}>

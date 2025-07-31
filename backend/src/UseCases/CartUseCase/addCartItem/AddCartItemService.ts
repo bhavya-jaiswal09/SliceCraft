@@ -27,7 +27,7 @@ export default class AddCartItemService {
     if (!cart || cart.id !== cartId) throw new CustomError("Cart não encontrado", 404);
 
     const pizza = await this.repository.pizza.findOne({ id: pizzaId });
-    if (!pizza || pizza.id !== pizzaId) throw new CustomError("Pizza não encontrada", 404);
+    if (!pizza || pizza.id !== pizzaId) throw new CustomError("Pizza not found", 404);
 
     const { saleInfo, pizzas } = saleInfoFactory(cart);
 

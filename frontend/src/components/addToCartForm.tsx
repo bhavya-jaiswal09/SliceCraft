@@ -148,7 +148,7 @@ export default function AddToCartForm({
               </Button>
             )}
             <Button color="primary" variant="contained" type="submit">
-              Adicionar ao cart <AddShoppingCartIcon fontSize="small" />
+              Add to Cart <AddShoppingCartIcon fontSize="small" />
             </Button>
           </Box>
         </Form>

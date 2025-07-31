@@ -197,7 +197,7 @@ export default function RegisterForm() {
                       variant="outlined"
                       margin="dense"
                       fullWidth
-                      placeholder="Digite uma password"
+                      placeholder="Enter password"
                       helperText={<ErrorMessage name="password" />}
                       error={props.errors.password && props.touched.password}
                       InputProps={{
@@ -224,7 +224,7 @@ export default function RegisterForm() {
                       name="confirmPassword"
                       label="Confirm Password"
                       type="password"
-                      placeholder="Confirme sua password"
+                      placeholder="Confirm password"
                       as={StyledField}
                       variant="outlined"
                       margin="dense"
@@ -255,7 +255,7 @@ export default function RegisterForm() {
                   label="Address"
                   id="address"
                   type="text"
-                  placeholder="Digite seu address"
+                  placeholder="Enter address"
                   as={StyledField}
                   variant="outlined"
                   margin="dense"
@@ -294,7 +294,7 @@ export default function RegisterForm() {
                   type="submit"
                   sx={{ fontWeight: "bold", fontSize: "20px" }}
                 >
-                  Cadastrar
+                  Register
                 </Button>
               </Form>
             );

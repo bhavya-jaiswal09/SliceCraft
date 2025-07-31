@@ -212,7 +212,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
                         mb: 5,
                         border: "1px solid white",
                       }}
-                      alt="Imagem de profile"
+                      alt="Profile picture"
                       src={
                         props.values.image ||
                         "https://cdn-icons-png.flaticon.com/512/711/711769.png"
@@ -250,7 +250,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
                         variant="outlined"
                         margin="dense"
                         fullWidth
-                        placeholder="Digite uma password"
+                        placeholder="Enter password"
                         helperText={<ErrorMessage name="password" />}
                         disabled={!isEditing}
                         error={
@@ -332,7 +332,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
                   label="Address"
                   id="address"
                   type="text"
-                  placeholder="Digite seu address"
+                  placeholder="Enter address"
                   as={StyledField}
                   variant="outlined"
                   margin="dense"

@@ -18,7 +18,7 @@ export default class CreateUserService {
       { phone: userDTO.phone },
     ]);
 
-    if (user) throw new CustomError("O user já existe", 409);
+    if (user) throw new CustomError("User already exists", 409);
 
     const hashPassword = await bcrypt.hash(userDTO.password, 10);
 

@@ -133,7 +133,7 @@ export default function LoginForm() {
                     type={showPassword ? "text" : "password"}
                     label="Password"
                     as={StyledField}
-                    placeholder="Digite sua password"
+                    placeholder="Enter your password"
                     margin="dense"
                     fullWidth
                     helperText={<ErrorMessage name="password" />}

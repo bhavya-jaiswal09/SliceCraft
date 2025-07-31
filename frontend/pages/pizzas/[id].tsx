@@ -92,7 +92,7 @@ export default function PizzaDetails({
                 component="span"
                 sx={{ color: "primary.main", fontWeight: "bold" }}
               >
-                Price: ₹{" "}
+                Price: ${" "}
               </Typography>
               {price}
             </Typography>

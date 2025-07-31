@@ -21,7 +21,7 @@ export default class UpdateCartItemService {
     if (!user || user.email !== email) throw new CustomError("User not found", 404);
 
     const cartItem = await this.repository.cartItem.findOne({ id: cartItemId });
-    if (!cartItem || cartItem.id !== cartItemId) throw new CustomError("Item do cart não encontrado", 404);
+    if (!cartItem || cartItem.id !== cartItemId) throw new CustomError("Cart item not found", 404);
 
     await this.repository.cartItem.update(cartItem, cartItemDTO);
 
@@ -34,6 +34,6 @@ export default class UpdateCartItemService {
 
     await this.repository.cart.update(cart, { totalPrice });
 
-    return { message: "Item do cart atualizado com sucesso" };
+    return { message: "Cart item updated successfully" };
   }
 }

@@ -157,7 +157,7 @@ export default function Cart(props: CartProps) {
                 sx={{ fontSize: "2rem", fontWeight: "bold" }}
                 component="h1"
               >
-                Cart vazio
+                Your cart is empty
               </Typography>
               <ShoppingCartOutlinedIcon
                 sx={{
@@ -181,7 +181,7 @@ export default function Cart(props: CartProps) {
                   variant="contained"
                   onClick={() => router.push("/user/my_orders")}
                 >
-                  Meus Pedidos
+                  My Orders
                 </Button>
                 <Button
                   sx={{

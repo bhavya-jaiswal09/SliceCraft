@@ -78,7 +78,7 @@ export default function Home() {
             }}
             variant="h3"
           >
-            Venha conhecer nossa pizzeria
+            Premium Pizza, Delivered Fast
           </Typography>
           <Button
             onClick={() => router.push("/pizzas")}
@@ -94,7 +94,7 @@ export default function Home() {
             }}
           >
             <EastIcon sx={{backgroundColor: "#0D0D0D", color: "primary.main", borderRadius: "30px", fontSize: "40px", p: 1, mr: 2}} />
-            Back to Menu
+            Explore Menu
           </Button>
         </Box>
         <Box

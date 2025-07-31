@@ -209,14 +209,14 @@ export default function CartCard({
                       fullWidth
                       sx={{ padding: "2px 16px" }}
                       variant="contained"
-                      aria-label="Editar pedido do cart"
+                      aria-label="Edit cart item"
                       onClick={() => setOpenModal(true)}
                     >
-                      Editar
+                      Edit
                     </Button>
                   </Box>
                   <Box
-                    title="Excluir"
+                    title="Delete"
                     sx={{ width: { xs: "100%", sm: "inherit" } }}
                   >
                     <Button
@@ -226,7 +226,7 @@ export default function CartCard({
                       }}
                       fullWidth
                       variant="contained"
-                      aria-label="Excluir pedido do cart"
+                      aria-label="Remove item from cart"
                       onClick={() => handleCartItemDeletion()}
                     >
                       Remove Item

@@ -9,7 +9,7 @@ export default function NotFound() {
   return (
     <>
       <Head>
-        <title>404 - Página não encontrada</title>
+        <title>404 - Page not found</title>
       </Head>
       <Box sx={{
         alignItems: "center",
@@ -40,7 +40,7 @@ export default function NotFound() {
             layout="fill"
             objectFit='contain'
             src="/notFound.svg"
-            alt="Página não encontrada"
+            alt="Page not found"
           />
         </Box>
         <Typography
@@ -53,7 +53,7 @@ export default function NotFound() {
           component={"h1"}
           variant={"h1"}
         >
-          Ops! Página não encontrada
+          Oops! Page not found
         </Typography>
         <Button
           sx={{
@@ -64,7 +64,7 @@ export default function NotFound() {
           onClick={() => router.push("/pizzas")}
           variant="contained"
         >
-          Voltar para a página inicial
+          Back to Home Page
         </Button>
       </Box>
     </>
