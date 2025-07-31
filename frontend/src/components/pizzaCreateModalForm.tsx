@@ -156,7 +156,7 @@ export default function PizzaCreateModalForm({
               </Avatar>
               <Field
                 name="flavor"
-                label="Nome"
+                label="Pizza Name"
                 type="text"
                 as={StyledField}
                 variant="outlined"
@@ -192,9 +192,7 @@ export default function PizzaCreateModalForm({
                   }}
                 >
                   <FormControlLabel
-                    value="Savory"
-                    control={<StyledRadio />}
-                    label="Savory"
+                    value="Savory" control={<StyledRadio />} label="Savory"
                   />
                   <FormControlLabel
                     value="Sweet"
@@ -290,7 +288,7 @@ export default function PizzaCreateModalForm({
               <Field
                 name="img"
                 onChange={props.handleChange}
-                label="URL da imagem"
+                label="Image URL"
                 type="text"
                 as={StyledField}
                 variant="outlined"
@@ -311,3 +309,4 @@ export default function PizzaCreateModalForm({
     </Modal>
   );
 }
+

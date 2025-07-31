@@ -100,7 +100,7 @@ export default function CardMyPurchase({
                           borderRadius: "10px",
                         }}
                         image={ordersPizza.pizza.img}
-                        title={`Pizza de ${ordersPizza.pizza.flavor}`}
+                        title={`${ordersPizza.pizza.flavor} Pizza`}
                       />
                     </Box>
                     <Box sx={{ flex: 1 }}>
@@ -118,10 +118,10 @@ export default function CardMyPurchase({
                         Size: {ordersPizza.size}
                       </Typography>
                       <Typography variant="subtitle2">
-                        Crust: {ordersPizza.border ? "Sim" : "Não"}
+                        Crust: {ordersPizza.border ? "Yes" : "No"}
                       </Typography>
                       <Typography sx={{ mb: 1 }} variant="subtitle2">
-                        Price ₹{ordersPizza.pizza.price}
+                        Price: ₹{ordersPizza.pizza.price}
                       </Typography>
                     </Box>
                   </Box>
@@ -179,7 +179,7 @@ export default function CardMyPurchase({
                   position: "relative",
                 }}
               >
-                <Typography sx={{ fontSize: "25px" }}>Cliente:</Typography>
+                <Typography sx={{ fontSize: "25px" }}>Customer:</Typography>
                 <Typography
                   sx={{
                     maxWidth: "90px",

@@ -163,7 +163,7 @@ export default function LoginForm() {
                     }}
                   >
                     <Typography>
-                      Don't have an account?
+                      Don&apos;t have an account?
                       <Link
                         style={{ textDecoration: "none", color: "#FFCC33" }}
                         href="/register"

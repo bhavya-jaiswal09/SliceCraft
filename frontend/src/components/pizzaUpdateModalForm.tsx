@@ -154,7 +154,7 @@ export default function PizzaUpdateModalForm({
             <Form>
               <Field
                 name="flavor"
-                label="Nome"
+                label="Pizza Name"
                 type="text"
                 as={StyledField}
                 variant="outlined"
@@ -190,9 +190,7 @@ export default function PizzaUpdateModalForm({
                   }}
                 >
                   <FormControlLabel
-                    value="Savory"
-                    control={<StyledRadio />}
-                    label="Savory"
+                    value="Savory" control={<StyledRadio />} label="Savory"
                   />
                   <FormControlLabel
                     value="Sweet"
@@ -287,7 +285,7 @@ export default function PizzaUpdateModalForm({
               />
               <Field
                 name="img"
-                label="URL da imagem"
+                label="Image URL"
                 type="text"
                 as={StyledField}
                 variant="outlined"
@@ -308,3 +306,4 @@ export default function PizzaUpdateModalForm({
     </Modal>
   );
 }
+

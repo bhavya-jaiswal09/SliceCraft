@@ -225,10 +225,10 @@ export default function ProfileForm({ user }: ProfileFormProps) {
                   <Grid item xs={12} sm={6}>
                     <Field
                       name="fullName"
-                      label="Nome"
+                      label="Full Name"
                       type="text"
                       as={StyledField}
-                      placeholder="Nome"
+                      placeholder="Your full name"
                       variant="outlined"
                       margin="dense"
                       fullWidth
@@ -322,7 +322,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
                   variant="outlined"
                   margin="dense"
                   fullWidth
-                  placeholder="(00) 00000-0000"
+                  placeholder="9876543210"
                   helperText={<ErrorMessage name="phone" />}
                   error={props.errors.phone && Boolean(props.touched.phone)}
                   disabled={!isEditing}
@@ -381,3 +381,5 @@ export default function ProfileForm({ user }: ProfileFormProps) {
     </Box>
   );
 }
+
+

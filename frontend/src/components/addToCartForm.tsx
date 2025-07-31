@@ -13,7 +13,6 @@ import { useRouter } from "next/router";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { userContext } from "../context/userProvider";
-import { Height } from "@mui/icons-material";
 
 type AddToCartFormProps = {
   pizzaId: string;
@@ -46,15 +45,8 @@ export default function AddToCartForm({
     >
       {(props) => (
         <Form style={{ width: "100%" }}>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-            }}
-          >
+          <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <Typography>Size:</Typography>
-
             <Field
               labelId="select-size-label"
               name="size"
@@ -62,9 +54,7 @@ export default function AddToCartForm({
                 color: "white",
                 height: "40px",
                 boxShadow: "0 0 4px rgba(252, 252, 15, 0.445)",
-                "&:focus": {
-                  outline: "none",
-                },
+                "&:focus": { outline: "none" },
                 margin: "10px 0",
               }}
               as={Select}
@@ -74,34 +64,17 @@ export default function AddToCartForm({
               <MenuItem value="small">Small</MenuItem>
             </Field>
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-            }}
-          >
+          <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <Typography>Stuffed Crust:</Typography>
             <Field
               name="border"
               size="medium"
               type="checkbox"
-              sx={{
-                color: "rgba(243, 243, 38, 0.199)",
-                marginBottom: "10px",
-              }}
+              sx={{ color: "rgba(243, 243, 38, 0.199)", marginBottom: "10px" }}
               as={Checkbox}
             />
           </Box>
-
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              marginBottom: "10px",
-            }}
-          >
+          <Box sx={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
             <Typography>Quantity:</Typography>
             <Field
               name="quantity"
@@ -118,33 +91,16 @@ export default function AddToCartForm({
               }}
               as={TextField}
               InputProps={{
-                style: {
-                  color: "white",
-                  borderColor: "white",
-                  padding: "0 10px",
-                },
-                inputProps: {
-                  min: 1,
-                },
+                style: { color: "white", borderColor: "white", padding: "0 10px" },
+                inputProps: { min: 1 },
                 disableUnderline: true,
               }}
             />
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              padding: "10px 0",
-            }}
-          >
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", padding: "10px 0" }}>
             {hasDetailsButton && (
-              <Button
-                variant="contained"
-                onClick={() => router.push(`/pizzas/${pizzaId}`)}
-              >
-                Detalhes
+              <Button variant="contained" onClick={() => router.push(/pizzas/)}>
+                Details
               </Button>
             )}
             <Button color="primary" variant="contained" type="submit">

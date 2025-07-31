@@ -57,7 +57,7 @@ export default function PizzaCard({
         >
           <Typography variant="h6">{flavor}</Typography>
           <Typography sx={{ color: "#FFCC33" }} component="span">
-            ₹ {price}
+            ₹{price}
           </Typography>
         </CardContent>
         <CardActions>

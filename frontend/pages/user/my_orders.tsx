@@ -99,7 +99,7 @@ export default function MyOrders(props: OrderProps) {
                 fullWidth
                 onClick={() => router.push(`/pizzas`)}
               >
-                comprar
+                Order Now
               </Button>
             </Card>
           </Container>

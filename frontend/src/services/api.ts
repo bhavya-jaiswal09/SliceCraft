@@ -2,8 +2,13 @@ import axios from "axios";
 
 import { ApiReturnMessage } from "../Types";
 
+const isServer = typeof window === "undefined";
+const baseURL = isServer
+  ? (process.env.BACKEND_URL || "http://backend:3001/")
+  : (process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001/");
+
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001/",
+  baseURL,
 });
 
 type ApiResponse<T> = {

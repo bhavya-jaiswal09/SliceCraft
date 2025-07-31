@@ -140,7 +140,7 @@ export default function CartCard({
                         padding: "0 10px",
                       }}
                     >
-                      {border ? "Sim" : "Não"}
+                      {border ? "Yes" : "No"}
                     </Typography>
                   </Typography>
 
@@ -149,7 +149,7 @@ export default function CartCard({
                     variant="subtitle2"
                     sx={{ fontSize: { xs: "24px", sm: "22px" } }}
                   >
-                    quantity
+                    Qty
                     <Typography
                       variant="subtitle2"
                       sx={{
@@ -161,7 +161,7 @@ export default function CartCard({
                       }}
                     >
                       {" "}
-                      {quantity} uni.{" "}
+                      {quantity} pcs{" "}
                     </Typography>
                   </Typography>
                   <Typography

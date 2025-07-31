@@ -28,21 +28,31 @@ export default function Cart(props: CartProps) {
   };
 
   const handlePurchaseFinished = async () => {
-    const pizzas = cart?.cartPizzas.map(
-      ({ pizza, border, quantity, size }) => ({
-        pizzaId: pizza.id,
-        border,
-        quantity,
-        size,
-      })
-    );
-    setApiHeaders();
-    await postRequest("/order", {
-      cartId: cart?.id,
-      pizzas,
-    });
+    try {
+      const pizzas = cart?.cartPizzas.map(
+        ({ pizza, border, quantity, size }) => ({
+          pizzaId: pizza.id,
+          border,
+          quantity,
+          size,
+        })
+      );
+      setApiHeaders();
+      const res = await postRequest<any>("/order", {
+        cartId: cart?.id,
+        pizzas,
+      });
 
-    await handleCartReload();
+      if (res.status === 201 || res.status === 200) {
+        alert("Order placed successfully! 🍕");
+        await handleCartReload();
+        router.push("/user/my_orders");
+      } else {
+        alert(res?.data?.message || "Failed to place order. Please try again.");
+      }
+    } catch (error: any) {
+      alert(error?.response?.data?.message || "Error placing order");
+    }
   };
 
   return (

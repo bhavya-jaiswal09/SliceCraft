@@ -115,8 +115,9 @@ export default function RegisterForm() {
 
       actions.resetForm();
       router.push("/pizzas");
-    } catch (err) {
-      return alert(`Internal server error, please try again later`);
+    } catch (err: any) {
+      const msg = err?.response?.data?.message || "Internal server error, please try again later";
+      return alert(Array.isArray(msg) ? msg.join(", ") : msg);
     }
   }
 
@@ -146,10 +147,10 @@ export default function RegisterForm() {
                   <Grid item xs={12} sm={6}>
                     <Field
                       name="firstName"
-                      label="Nome"
+                      label="First Name"
                       type="text"
                       as={StyledField}
-                      placeholder="Nome"
+                      placeholder="Your first name"
                       variant="outlined"
                       margin="dense"
                       fullWidth
@@ -163,7 +164,7 @@ export default function RegisterForm() {
                       label="Last Name"
                       type="text"
                       as={StyledField}
-                      placeholder="Last Name"
+                      placeholder="Your last name"
                       variant="outlined"
                       margin="dense"
                       fullWidth
@@ -246,7 +247,7 @@ export default function RegisterForm() {
                   variant="outlined"
                   margin="dense"
                   fullWidth
-                  placeholder="(00) 00000-0000"
+                  placeholder="9876543210"
                   helperText={<ErrorMessage name="phone" />}
                   error={props.errors.phone && props.touched.phone}
                 />
@@ -304,3 +305,4 @@ export default function RegisterForm() {
     </Box>
   );
 }
+

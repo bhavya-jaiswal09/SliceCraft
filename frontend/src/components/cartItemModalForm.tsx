@@ -67,7 +67,7 @@ export default function CartItemModalForm({
             borderRadius: "10px",
             border: "2px solid #FFCC33",
           }}
-          alt={`Pizza de ${info.pizza.flavor}`}
+          alt={`${info.pizza.flavor} Pizza`}
           src={info.pizza.img}
         />
         <Typography
@@ -95,13 +95,7 @@ export default function CartItemModalForm({
           {(props) => (
             <Form style={{ width: "100%" }}>
               <Box sx={{ width: "200px", margin: "auto" }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                  }}
-                >
+                <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <Typography>Size:</Typography>
                   <Field
                     labelId="select-size-label"
@@ -113,7 +107,6 @@ export default function CartItemModalForm({
                         borderWidth: "1px",
                         borderColor: "#FFCC33",
                       },
-
                       "&:hover .MuiOutlinedInput-notchedOutline": {
                         borderWidth: "1px",
                         borderColor: "#FFCC33",
@@ -126,13 +119,7 @@ export default function CartItemModalForm({
                     <MenuItem value="small">Small</MenuItem>
                   </Field>
                 </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                  }}
-                >
+                <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <Typography>Stuffed Crust:</Typography>
                   <Field
                     name="border"

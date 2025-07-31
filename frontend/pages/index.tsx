@@ -103,48 +103,40 @@ export default function Home() {
             width: "100%",
           }}
         >
-          <Box
-            sx={{
-              alignItems: "center",
-              display: "flex",
-              gap: "5px",
-            }}
-          >
+          <Box sx={{ alignItems: "center", display: "flex", gap: "5px" }}>
             <GitHubIcon fontSize="medium" />
             <Typography
               href="https://github.com/adarshkshitij"
               target="_blank"
               component="a"
               variant="h5"
-              sx={{
-                color: "primary.main",
-                textDecoration: "none",
-                "&:hover": { color: "#B28E23" },
-              }}
+              sx={{ color: "primary.main", textDecoration: "none", "&:hover": { color: "#B28E23" } }}
             >
               github.com/adarshkshitij
             </Typography>
           </Box>
-          <Box
-            sx={{
-              alignItems: "center",
-              display: "flex",
-              gap: "5px",
-            }}
-          >
+          <Box sx={{ alignItems: "center", display: "flex", gap: "5px" }}>
             <GitHubIcon fontSize="medium" />
             <Typography
               href="https://github.com/bhavya-jaiswal09"
               target="_blank"
               component="a"
               variant="h5"
-              sx={{
-                color: "primary.main",
-                textDecoration: "none",
-                "&:hover": { color: "#B28E23" },
-              }}
+              sx={{ color: "primary.main", textDecoration: "none", "&:hover": { color: "#B28E23" } }}
             >
               github.com/bhavya-jaiswal09
+            </Typography>
+          </Box>
+          <Box sx={{ alignItems: "center", display: "flex", gap: "5px" }}>
+            <GitHubIcon fontSize="medium" />
+            <Typography
+              href="https://github.com/prateekkr12"
+              target="_blank"
+              component="a"
+              variant="h5"
+              sx={{ color: "primary.main", textDecoration: "none", "&:hover": { color: "#B28E23" } }}
+            >
+              github.com/prateekkr12
             </Typography>
           </Box>
         </Box>

@@ -11,15 +11,15 @@ export const validationLogin = yup.object().shape({
 export const validationRegister = yup.object().shape({
   firstName: yup
     .string()
-    .min(2, "Name must have at least 2 characters")
+    .min(2, "Name must be at least 2 characters")
     .required("This field is required"),
   lastName: yup
     .string()
-    .min(2, "Name must have at least 2 characters")
+    .min(2, "Name must be at least 2 characters")
     .required("This field is required"),
   address: yup
     .string()
-    .min(2, "Address must have at least 2 characters")
+    .min(2, "Address must be at least 2 characters")
     .required("This field is required"),
   email: yup
     .string()
@@ -35,8 +35,8 @@ export const validationRegister = yup.object().shape({
   phone: yup
     .string()
     .matches(
-      /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/,
-      "Invalid Phone"
+      /^[6-9]\d{9}$/,
+      "Invalid Phone (e.g. 9876543210)"
     )
     .required("This field is required"),
 });
@@ -44,11 +44,11 @@ export const validationProfile = yup.object().shape({
   image: yup.string().min(1).optional(),
   fullName: yup
     .string()
-    .min(5, "Name must have at least 5 characters")
+    .min(5, "Name must be at least 5 characters")
     .required("This field is required"),
   address: yup
     .string()
-    .min(2, "Address must have at least 2 characters")
+    .min(2, "Address must be at least 2 characters")
     .required("This field is required"),
   email: yup
     .string()
@@ -58,8 +58,8 @@ export const validationProfile = yup.object().shape({
   phone: yup
     .string()
     .matches(
-      /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/,
-      "Invalid Phone"
+      /^[6-9]\d{9}$/,
+      "Invalid Phone (e.g. 9876543210)"
     )
     .required("This field is required"),
 });
@@ -76,15 +76,15 @@ export const validationEditCartItem = yup.object().shape({
 export const validationPizza = yup.object().shape({
   flavor: yup
     .string()
-    .min(3, "Name must have at least 5 characters")
+    .min(3, "Name must be at least 3 characters")
     .required("This field is required"),
   type: yup
     .string()
-    .min(2, "Name must have at least 2 characters")
+    .min(2, "Type must be at least 2 characters")
     .required("This field is required"),
   price: yup
     .number()
-    .min(1, "Value must be greater than or equal to 1")
+    .min(1, "Price must be greater than or equal to 1")
     .required("This field is required"),
   ingredients: yup
     .array(yup.string())
