@@ -9,7 +9,7 @@ export const userSchema = z
     phone: z
       .string()
       .regex(
-        /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/,
+        /^[6-9]\d{9}$/,
         "Invalid phone number"
       ),
   })
@@ -31,7 +31,7 @@ export const userUpdateSchema = z
     phone: z
       .string()
       .regex(
-        /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/,
+        /^[6-9]\d{9}$/,
         "Invalid phone number"
       ),
     img: z.string(),

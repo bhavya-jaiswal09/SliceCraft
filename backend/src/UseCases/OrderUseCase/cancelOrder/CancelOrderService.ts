@@ -15,14 +15,14 @@ export default class CancelOrderService {
 
     const order = await this.repository.order.findOne({ id: orderId });
 
-    if (!order || order.status === 'Cancelled') throw new CustomError("Order not found or already cancelled", 401);
+    if (!order || order.status === 'Cancelled') throw new CustomError("Order not found or already cancelled", 400);
 
     const maxMinutesToCancel = 1000 * 300;
     const orderDate = new Date(order.date).getTime() + maxMinutesToCancel;
 
     const date = generateDate();
 
-    if (new Date(date).getTime() > orderDate) throw new CustomError("Cannot cancel order after 5 minutes", 401);
+    if (new Date(date).getTime() > orderDate) throw new CustomError("Cannot cancel order after 5 minutes", 400);
 
     await this.repository.order.update(order, { status: 'Cancelled' });
 
