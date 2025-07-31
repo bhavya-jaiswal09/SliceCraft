@@ -1,15 +1,13 @@
-FROM node:16.14
+FROM node:18-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN ["npm", "i"] 
+RUN npm install
 
 COPY . .
 
-RUN chown node:node /app
+EXPOSE 3001
 
-USER node
-
-CMD ["npm", "run", "dev"]
+CMD ["sh", "-c", "node -r ts-node/register src/setup-db.ts || true && node -r ts-node/register src/server.ts"]

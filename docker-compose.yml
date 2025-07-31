@@ -16,7 +16,7 @@ services:
 
   backend:
     build:
-      context: ./
+      context: ./backend
       dockerfile: Dockerfile
     container_name: slicecraft_backend
     restart: always
@@ -30,8 +30,32 @@ services:
       - DB_NAME=slicecraft
       - PORT=3001
       - SECRET_KEY=slicecraft_jwt_secret_key_12345
+    volumes:
+      - ./backend/src:/app/src
     depends_on:
       - postgresdb
+    networks:
+      - slicecraft_net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: slicecraft_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+      - BACKEND_URL=http://backend:3001
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/pages:/app/pages
+      - ./frontend/public:/app/public
+      - ./frontend/styles:/app/styles
+    depends_on:
+      - backend
     networks:
       - slicecraft_net
 
